@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
-function App() {
+class BooksApp extends Component {
+  state = {
+    showSearchPage: false
+  }
+  render() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="search-books">
+            <div className="search-books-bar">
+              <button className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</button>
+              <div className="search-books-input-wrapper">
+                {/*
+                  NOTES: The search from BooksAPI is limited to a particular set of search terms.
+                  You can find these search terms here:
+                  https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
+                  However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
+                  you don't find a specific author or title. Every search is limited by search terms.
+                */}
+                <input type="text" placeholder="Search by title or author"/>
+
+              </div>
+            </div>
+            <div className="search-books-results">
+              <ol className="books-grid"></ol>
+            </div>
+          </div>
     </div>
-  );
+    );
+  }
 }
 
-export default App;
+export default BooksApp;
